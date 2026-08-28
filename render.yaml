@@ -2,6 +2,7 @@ services:
   - type: web
     name: clinic-growth-backend
     env: docker
+    rootDir: .
     dockerfilePath: ./Dockerfile
     plan: free
     healthCheckPath: /health
