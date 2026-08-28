@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: clinic-growth-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8081
+      - key: SPRING_PROFILES_ACTIVE
+        value: render
+      - key: DB_GROWTH_URL
+        value: jdbc:postgresql://pg-2ec02a9b-eakhalaivanp-46d0.i.aivencloud.com:15783/defaultdb?sslmode=require
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        sync: false
+      - key: SPRING_DATASOURCE_GROWTH_URL
+        value: jdbc:postgresql://pg-2ec02a9b-eakhalaivanp-46d0.i.aivencloud.com:15783/defaultdb?sslmode=require
+      - key: SPRING_DATASOURCE_GROWTH_USERNAME
+        value: avnadmin
+      - key: SPRING_DATASOURCE_GROWTH_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        value: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      - key: JWT_EXPIRATION_MS
+        value: 86400000
+      - key: ALLOWED_ORIGINS
+        value: https://med-clinic-website.onrender.com,https://med-clinic-website.vercel.app,http://localhost:5173,http://localhost:3000
+      - key: INTERNAL_GATEWAY_SECRET
+        value: clinic-internal-secret-key-2026
+      - key: FRONTEND_URL
+        value: https://med-clinic-website.onrender.com
+      - key: STRIPE_SECRET_KEY
+        value: sk_test_placeholder
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_placeholder
+      - key: STRIPE_PUBLISHABLE_KEY
+        value: pk_test_placeholder
+      - key: TWILIO_ACCOUNT_SID
+        value: mock
+      - key: TWILIO_AUTH_TOKEN
+        value: mock
+      - key: TWILIO_FROM_NUMBER
+        value: mock
+      - key: TWILIO_API_KEY_SID
+        value: mock
+      - key: TWILIO_API_KEY_SECRET
+        value: mock
