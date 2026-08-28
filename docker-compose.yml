@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  clinic-growth-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clinic-growth-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+      - DB_GROWTH_URL=${DB_GROWTH_URL:-jdbc:postgresql://pg-2ec02a9b-eakhalaivanp-46d0.i.aivencloud.com:15783/defaultdb?sslmode=require}
+      - DB_USER=${DB_USER:-avnadmin}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET:-404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:3000,http://localhost:5173,https://med-clinic-website.onrender.com,https://med-clinic-website.vercel.app}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8081/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
