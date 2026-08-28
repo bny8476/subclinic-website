@@ -45,9 +45,9 @@ app:
 
   datasource:
     growth:
-      url: ${DB_GROWTH_URL:jdbc:postgresql://localhost:5432/clinic_growth}
-      username: ${DB_USER:postgres}
-      password: ${DB_PASSWORD:postgres}
+      url: ${DB_GROWTH_URL:jdbc:postgresql://pg-2ec02a9b-eakhalaivanp-46d0.i.aivencloud.com:15783/defaultdb?sslmode=require}
+      username: ${DB_USER:avnadmin}
+      password: ${DB_PASSWORD}
 
   frontend-url: ${FRONTEND_URL:http://localhost:3000}
 
