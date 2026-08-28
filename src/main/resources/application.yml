@@ -1,0 +1,57 @@
+server:
+  port: ${PORT:8081}
+  address: 0.0.0.0
+  forward-headers-strategy: NATIVE
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    lazy-initialization: true
+  application:
+    name: clinic-growth-service
+  flyway:
+    enabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+jwt:
+  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+  access-token-expiration-ms: ${JWT_EXPIRATION_MS:900000}
+
+cors:
+  allowed-origins: ${ALLOWED_ORIGINS:https://med-clinic-website.onrender.com,https://med-clinic-website.vercel.app,http://localhost:5173,http://localhost:3000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+
+twilio:
+  account-sid: ${TWILIO_ACCOUNT_SID:mock}
+  auth-token: ${TWILIO_AUTH_TOKEN:mock}
+  from-number: ${TWILIO_FROM_NUMBER:mock}
+  api-key-sid: ${TWILIO_API_KEY_SID:mock}
+  api-key-secret: ${TWILIO_API_KEY_SECRET:mock}
+
+app:
+  gateway:
+    secret: ${INTERNAL_GATEWAY_SECRET:clinic-internal-secret-key-2026}
+  flyway:
+    baseline-on-migrate: true
+    baseline-version-growth: "0"
+
+  datasource:
+    growth:
+      url: ${DB_GROWTH_URL:jdbc:postgresql://localhost:5432/clinic_growth}
+      username: ${DB_USER:postgres}
+      password: ${DB_PASSWORD:postgres}
+
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:sk_test_placeholder}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:whsec_placeholder}
+  publishable-key: ${STRIPE_PUBLISHABLE_KEY:pk_test_placeholder}

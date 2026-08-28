@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+app:
+  flyway:
+    baseline-on-migrate: true
+    baseline-version-growth: "0"
+
+  datasource:
+    growth:
+      connection-timeout: 30000
+      validation-timeout: 5000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      minimum-idle: 1
+      maximum-pool-size: 5
+
+server:
+  tomcat:
+    threads:
+      max: 25
+      min-spare: 5
+    max-connections: 150

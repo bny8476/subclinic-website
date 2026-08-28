@@ -1,0 +1,24 @@
+spring:
+  flyway:
+    enabled: false
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+app:
+  datasource:
+    growth:
+jwt:
+  secret: default_dev_secret_key_that_is_long_enough_for_hs256_algorithm_12345
+  access-token-expiration-ms: 86400000
+
+stripe:
+  secret-key: sk_test_dev_placeholder_not_real
+  webhook-secret: whsec_dev_placeholder_not_real
+  publishable-key: pk_test_dev_placeholder_not_real
+
+twilio:
+  account-sid: ACdev0000000000000000000000000000
+  auth-token: dev_placeholder_auth_token
+  from-number: "+10000000000"
